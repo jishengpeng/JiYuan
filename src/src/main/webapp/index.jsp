@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>JSP - Hello World</title>
+        <title>吉园</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     </head>
@@ -10,8 +10,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Hello World</h1>
-                    <p>This is a simple JSP page.</p>
+                    <h1>吉园</h1>
+                    <p>欢迎来到吉园校园委托平台</p>
                 </div>
             </div>
             <div class="row">
