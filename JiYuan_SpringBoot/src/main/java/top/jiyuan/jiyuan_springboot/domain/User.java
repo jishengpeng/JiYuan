@@ -12,7 +12,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     private Integer userid;
-    @Column(length = 30)
+    @Column(unique = true, length = 30)
     @NotNull
     private String username;
     @Column(length = 30)
@@ -31,7 +31,7 @@ public class User {
     private String email;
     private Integer lastTime;//最后登录时间
     private Integer loginCount;//登录次数
-    private Integer validState;//用户是否有效
+    private Integer validState=1;//用户是否有效，0表示无效，1表示有效
 
     public Integer getUserid() {
         return userid;
