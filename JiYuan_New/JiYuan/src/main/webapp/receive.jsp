@@ -55,6 +55,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </head>
 <body>
+<%
+    String orderID = request.getParameter("orderID");
+    if (orderID == null) {
+        response.sendRedirect("/notexist.html");
+    }
+%>
 <!--header-->
 <div class="line">
 
@@ -203,7 +209,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </ul>
                     </div>
 
-                    <a onclick="processReceive()" class="cart">接单</a>
+                    <a href="#" class="cart">接单</a>
 
                 </div>
             </div>
@@ -331,7 +337,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 </div>
 
-<!---->
 <!--footer-->
 <div class="footer">
     <div class="col-md-3 footer-left">
@@ -398,17 +403,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <div class="clearfix"></div>
 </div>
-<script>
-    $(document).ready(function() {
-        var args = {}
-        var match = null
-        var search = decodeURIComponent(this.props.location.search)
-        var reg = /(?:([^&]+)=([^&]+))/g;
-        while((match = reg.exec(search.substring(1)))!==null){
-            args[match[1]] = match[2]
-        }
-        console.log('args:', args);
-    });
-</script>
 </body>
 </html>
