@@ -16,7 +16,7 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!--fonts-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
     <!--//fonts-->
 
 </head>
@@ -101,18 +101,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="clearfix"> </div>
 </div>
 <!---->
-<!--<div class="container">-->
-<!--    <div class="register">-->
-        <center>
-            <h2>发布订单界面</h2><br><br><br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <br/><br/><br/>
+            <h2>发布订单界面</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
                 <form>
-
-                </form>>
-        </center>
-
-<!--    </div>-->
-<!--</div>-->
-
+                    <div class="mb-3">
+                        <label for="order-name" class="form-label">订单标题</label>
+                        <input type="text" name="order-name" id="order-name" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="order-class" class="form-label">订单分类</label>
+                        <input type="text" name="order-class" id="order-class" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">价格</label>
+                        <input type="number" name="price" id="price" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="end-time" class="form-label">截止时间</label>
+                        <input type="datetime-local" name="end-time" id="end-time" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="picture" class="form-label"></label>
+                        <input type="hidden" name="picture" id="picture" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">提交</button>
+                    <br/><br/><br/>
+                </form>
+        </div>
+    </div>
+</div>
 <!---->
 <div class="footer">
     <div class="col-md-3 footer-left">
