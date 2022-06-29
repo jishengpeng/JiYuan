@@ -3,7 +3,7 @@ package top.lijiabo.jiyuan;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "jiyuanUser")
+@Table(name = "JIYUANUSER")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

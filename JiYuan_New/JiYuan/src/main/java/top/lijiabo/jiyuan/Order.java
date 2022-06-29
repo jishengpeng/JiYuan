@@ -3,7 +3,7 @@ package top.lijiabo.jiyuan;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "jiyuanOrder")
+@Table(name = "JIYUANORDER")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

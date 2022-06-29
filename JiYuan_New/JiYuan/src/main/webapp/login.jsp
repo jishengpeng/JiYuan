@@ -25,19 +25,21 @@
             ResultSet rs = stmt.executeQuery("SELECT PASSWD FROM JIYUANUSER WHERE USERNAME='" + username + "'");
             if (rs.next()) {
                 if (password.equals(rs.getString("PASSWD"))) {
-                    // Set Cookie
                     rs.close();
                     // Search User Role
                     rs = stmt.executeQuery("SELECT ROLE FROM JIYUANUSER WHERE USERNAME='" + username + "'");
                     if (rs.next()) {
                         String role = rs.getString("ROLE");
+                        // Set Cookie
+                        Cookie cookie = new Cookie("username", username);
+                        Cookie cookie2 = new Cookie("role", role);
+                        cookie.setMaxAge(60 * 60 * 24 * 7);
+                        response.addCookie(cookie);
+                        response.addCookie(cookie2);
+                        // 跳转
                         if (role.equalsIgnoreCase("admin")) {
-                            response.setHeader("Set-Cookie", "username=" + username + "; path=/;");
-                            response.setHeader("Set-Cookie", "role=" + role + "; path=/;");
                             response.sendRedirect("admin.html");
                         } else if (role.equalsIgnoreCase("user")) {
-                            response.setHeader("Set-Cookie", "username=" + username + "; path=/;");
-                            response.setHeader("Set-Cookie", "role=" + role + "; path=/;");
                             response.sendRedirect("index.html");
                         }
                     }

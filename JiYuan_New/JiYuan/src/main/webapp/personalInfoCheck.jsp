@@ -8,9 +8,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>检查</title>
 </head>
 <body>
-
+    <%
+        // Get Cookie
+        Cookie[] cookies = request.getCookies();
+        String username = "";
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("username")) {
+                    username = cookie.getValue();
+                }
+            }
+        }
+        if (username.equals("")) {
+            response.sendRedirect("login.html");
+        } else {
+            response.sendRedirect("account.html");
+        }
+    %>
 </body>
 </html>

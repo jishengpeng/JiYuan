@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ojdbc10">
+    <CLASSES>
+      <root url="jar:///usr/local/wildfly-26.0.1.Final/modules/com/oracle/ojdbc10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
