@@ -23,11 +23,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="Sport Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
-    <script type="application/x-javascript">function processReceive() {
-        // TODO:实现processReceive函数，获取接单单号，转到jsp处理
-        alert("接单成功！");
-    }
-
+    <script type="application/x-javascript">
     addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
