@@ -1,10 +1,14 @@
-<!--A Design by W3layouts 
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<!--A Design by W3layouts
 Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Sport A Ecommerce Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
@@ -79,13 +83,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="h_menu4"><!-- start h_menu4 -->
                 <a class="toggleMenu" href="#">Menu</a>
                 <ul class="nav">
-                    <li class="active"><a href="orders.html">广场区</a></li>
-                    <li><a href="orders.html">替课区</a></li>
-                    <li><a href="orders.html">作业区</a>
+                    <li class="active"><a href="orders.jsp">广场区</a></li>
+                    <li><a href="orders.jsp">替课区</a></li>
+                    <li><a href="orders.jsp">作业区</a>
                     </li>
-                    <li><a href="orders.html">跑腿区</a></li>
-                    <li><a href="orders.html">其他区</a></li>
-                    <li><a href="orders.html">更多功能<i> </i></a>
+                    <li><a href="orders.jsp">跑腿区</a></li>
+                    <li><a href="orders.jsp">其他区</a></li>
+                    <li><a href="orders.jsp">更多功能<i> </i></a>
                         <ul>
                             <li><a href="contact.html">联系客服</a></li>
                             <li><a href="account.html">个人信息</a></li>
@@ -115,7 +119,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <div class="product-grids">
     <div class="container">
-        <div class="product-top">
+        <%--<div class="product-top">
             <div class="col-md-4 grid-product-in">
                 <div class=" product-grid">
                     <a href="receive.html"><img class="img-responsive " src="images/pr.png" alt=""></a>
@@ -153,85 +157,52 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
             <div class="clearfix"></div>
-        </div>
-        <div class="product-top">
-            <div class="col-md-4 grid-product-in">
-                <div class=" product-grid">
-                    <a href="receive.html"><img class="img-responsive " src="images/pr3.png" alt=""></a>
-                    <div class="shoe-in">
-                        <h6><a href="receive.html">Lorem Ipsum is simply dummy </a></h6>
-                        <label>$67.99</label>
-                        <a href="receive.html" class="store">FIND A STORE</a>
-                    </div>
+        </div>--%>
+        <%
+            try {
+                Class.forName("oracle.jdbc.OracleDriver");
+                Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@//192.168.0.104:1521/orcl", "c##lijiabo", "123456");
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("select * from JIYUANORDER");
+                int i = 0;
+                while (rs.next()) {
+                    String id = rs.getString("ID");
+                    String orderName = rs.getString("ORDERNAME");
+                    String orderClass = rs.getString("ORDERCLASS");
+                    String price = rs.getString("PRICE");
+                    String endTime = rs.getString("ENDTIME");
+                    String picture = rs.getString("PICTURE");
+                    String postUid = rs.getString("POSTUID");
+                    String receiveUid = rs.getString("RECEIVEUID");
+                    String status = rs.getString("STATUS");
 
-                    <b class="plus-on">+</b>
-                </div>
-            </div>
-            <div class="col-md-4 grid-product-in">
-                <div class=" product-grid">
-                    <a href="receive.html"><img class="img-responsive " src="images/pr4.png" alt=""></a>
-                    <div class="shoe-in">
-                        <h6><a href="receive.html">Lorem Ipsum is simply dummy </a></h6>
-                        <label>$67.99</label>
-                        <a href="receive.html" class="store">FIND A STORE</a>
-                    </div>
+                    if(i%3==0) {
+                        out.println("<div class=\"product-top\">");
+                    }
+                    out.println("<div class=\"col-md-4 grid-product-in\">");
+                    out.println("<div class=\" product-grid\">");
+                    out.println("<a href=\"receive.html\"><img class=\"img-responsive \" src=\"images/pr.png\" alt=\"\"></a>");
+                    out.println("<div class=\"shoe-in\">");
+                    out.println("<h6><a href=\"receive.html\">"+orderName+"</a></h6>");
+                    out.println("<label>"+price+"</label>");
+                    out.println("<a href=\"receive.html\" class=\"store\">FIND A STORE</a>");
+                    out.println("</div>");
+                    out.println("<b class=\"plus-on\">+</b>");
+                    out.println("</div>");
+                    out.println("</div>");
+                    if(i%3==2) {
+                        out.println("<div class=\"clearfix\"></div>");
+                        out.println("</div>");
+                    }
 
-                    <b class="plus-on">+</b>
-                </div>
-            </div>
-            <div class="col-md-4 grid-product-in">
-                <div class=" product-grid">
-                    <a href="receive.html"><img class="img-responsive " src="images/sh.png" alt=""></a>
-                    <div class="shoe-in">
-                        <h6><a href="receive.html">Lorem Ipsum is simply dummy </a></h6>
-                        <label>$67.99</label>
-                        <a href="receive.html" class="store">FIND A STORE</a>
-                    </div>
-
-                    <b class="plus-on">+</b>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="product-top">
-            <div class="col-md-4 grid-product-in">
-                <div class=" product-grid">
-                    <a href="receive.html"><img class="img-responsive " src="images/sh2.png" alt=""></a>
-                    <div class="shoe-in">
-                        <h6><a href="receive.html">Lorem Ipsum is simply dummy </a></h6>
-                        <label>$67.99</label>
-                        <a href="receive.html" class="store">FIND A STORE</a>
-                    </div>
-
-                    <b class="plus-on">+</b>
-                </div>
-            </div>
-            <div class="col-md-4 grid-product-in">
-                <div class=" product-grid">
-                    <a href="receive.html"><img class="img-responsive " src="images/pr1.png" alt=""></a>
-                    <div class="shoe-in">
-                        <h6><a href="receive.html">Lorem Ipsum is simply dummy </a></h6>
-                        <label>$67.99</label>
-                        <a href="receive.html" class="store">FIND A STORE</a>
-                    </div>
-
-                    <b class="plus-on">+</b>
-                </div>
-            </div>
-            <div class="col-md-4 grid-product-in">
-                <div class=" product-grid">
-                    <a href="receive.html"><img class="img-responsive " src="images/pr.png" alt=""></a>
-                    <div class="shoe-in">
-                        <h6><a href="receive.html">Lorem Ipsum is simply dummy </a></h6>
-                        <label>$67.99</label>
-                        <a href="receive.html" class="store">FIND A STORE</a>
-                    </div>
-
-                    <b class="plus-on">+</b>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
+                    i++;
+                }
+                stmt.close();
+                conn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        %>
     </div>
 </div>
 
@@ -241,17 +212,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <h4>主要功能</h4>
         <div class="run-top">
             <ul class="run-grid">
-                <li><a href="orders.html">主页</a></li>
-                <li><a href="orders.html">广场区</a></li>
-                <li><a href="orders.html">替课区</a></li>
-                <li><a href="orders.html">作业区</a></li>
-                <li><a href="orders.html">跑腿区</a></li>
-                <li><a href="orders.html">其他区</a></li>
+                <li><a href="orders.jsp">主页</a></li>
+                <li><a href="orders.jsp">广场区</a></li>
+                <li><a href="orders.jsp">替课区</a></li>
+                <li><a href="orders.jsp">作业区</a></li>
+                <li><a href="orders.jsp">跑腿区</a></li>
+                <li><a href="orders.jsp">其他区</a></li>
             </ul>
             <ul class="run-grid">
-                <li><a href="orders.html">我要接单</a></li>
-                <li><a href="orders.html">我要发单</a></li>
-                <li><a href="orders.html">支付系统</a></li>
+                <li><a href="orders.jsp">我要接单</a></li>
+                <li><a href="orders.jsp">我要发单</a></li>
+                <li><a href="orders.jsp">支付系统</a></li>
             </ul>
             <div class="clearfix"></div>
         </div>
