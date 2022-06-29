@@ -122,11 +122,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <%--<div class="product-top">
             <div class="col-md-4 grid-product-in">
                 <div class=" product-grid">
-                    <a href="receive.html"><img class="img-responsive " src="images/pr.png" alt=""></a>
+                    <a href="receive.jsp"><img class="img-responsive " src="images/pr.png" alt=""></a>
                     <div class="shoe-in">
-                        <h6><a href="receive.html">Lorem Ipsum is simply dummy </a></h6>
+                        <h6><a href="receive.jsp">Lorem Ipsum is simply dummy </a></h6>
                         <label>$67.99</label>
-                        <a href="receive.html" class="store">FIND A STORE</a>
+                        <a href="receive.jsp" class="store">FIND A STORE</a>
                     </div>
 
                     <b class="plus-on">+</b>
@@ -134,11 +134,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="col-md-4 grid-product-in">
                 <div class=" product-grid">
-                    <a href="receive.html"><img class="img-responsive " src="images/pr1.png" alt=""></a>
+                    <a href="receive.jsp"><img class="img-responsive " src="images/pr1.png" alt=""></a>
                     <div class="shoe-in">
-                        <h6><a href="receive.html">Lorem Ipsum is simply dummy </a></h6>
+                        <h6><a href="receive.jsp">Lorem Ipsum is simply dummy </a></h6>
                         <label>$67.99</label>
-                        <a href="receive.html" class="store">FIND A STORE</a>
+                        <a href="receive.jsp" class="store">FIND A STORE</a>
                     </div>
 
                     <b class="plus-on">+</b>
@@ -146,11 +146,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="col-md-4 grid-product-in">
                 <div class=" product-grid">
-                    <a href="receive.html"><img class="img-responsive " src="images/pr2.png" alt=""></a>
+                    <a href="receive.jsp"><img class="img-responsive " src="images/pr2.png" alt=""></a>
                     <div class="shoe-in">
-                        <h6><a href="receive.html">Lorem Ipsum is simply dummy </a></h6>
+                        <h6><a href="receive.jsp">Lorem Ipsum is simply dummy </a></h6>
                         <label>$67.99</label>
-                        <a href="receive.html" class="store">FIND A STORE</a>
+                        <a href="receive.jsp" class="store">FIND A STORE</a>
                     </div>
 
                     <b class="plus-on">+</b>
@@ -181,11 +181,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     }
                     out.println("<div class=\"col-md-4 grid-product-in\">");
                     out.println("<div class=\" product-grid\">");
-                    out.println("<a href=\"receive.html\"><img class=\"img-responsive \" src=\"images/pr.png\" alt=\"\"></a>");
+                    out.println("<a href=\"receive.jsp\"><img class=\"img-responsive \" src=\"images/pr.png\" alt=\"\"></a>");
                     out.println("<div class=\"shoe-in\">");
-                    out.println("<h6><a href=\"receive.html?orderID="+id+"\">"+orderName+"</a></h6>");
+                    out.println("<h6><a href=\"receive.jsp?orderID="+id+"\">"+orderName+"</a></h6>");
                     out.println("<label>"+price+"</label>");
-                    out.println("<a href=\"receive.html\" class=\"store\">FIND A STORE</a>");
+                    out.println("<a href=\"receive.jsp\" class=\"store\">FIND A STORE</a>");
                     out.println("</div>");
                     out.println("<b class=\"plus-on\">+</b>");
                     out.println("</div>");
@@ -234,7 +234,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li><a href="#">重要新闻</a></li>
                 <li><a href="#">开放型社区</a></li>
                 <li><a href="#">版本更新日志</a></li>
-                <li><a href="receive.html">吉园介绍</a></li>
+                <li><a href="receive.jsp">吉园介绍</a></li>
                 <li><a href="#">多功能社区</a></li>
                 <li><a href="#">更多信息</a></li>
             </ul>
