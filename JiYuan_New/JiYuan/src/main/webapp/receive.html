@@ -398,5 +398,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <div class="clearfix"></div>
 </div>
+<script>
+    $(document).ready(function() {
+        var args = {}
+        var match = null
+        var search = decodeURIComponent(this.props.location.search)
+        var reg = /(?:([^&]+)=([^&]+))/g;
+        while((match = reg.exec(search.substring(1)))!==null){
+            args[match[1]] = match[2]
+        }
+        console.log('args:', args);
+    });
+</script>
 </body>
 </html>
