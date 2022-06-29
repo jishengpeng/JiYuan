@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="JiYuan:war">
+    <output-path>$PROJECT_DIR$/JiYuan/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>JiYuan</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="JiYuan-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="JiYuan:war exploded" />
+    </root>
+  </artifact>
+</component>
