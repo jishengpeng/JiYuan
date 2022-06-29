@@ -4,6 +4,10 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -59,6 +63,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     String orderID = request.getParameter("orderID");
     if (orderID == null) {
         response.sendRedirect("/notexist.html");
+    }
+    // Get order information
+    Integer id = 0;
+    String endTime = "";
+    String orderClass = "";
+    String orderName = "";
+    String picture = "";
+    Integer postUid = 0;
+    Integer price = 0;
+    Integer receiveUid = 0;
+    String status = "";
+    try {
+        Class.forName("oracle.jdbc.OracleDriver");
+        Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@//192.168.0.104:1521/orcl", "c##lijiabo", "123456");
+        Statement stmt = conn.createStatement();
+        // Get User ID
+        ResultSet rs = stmt.executeQuery("select * from JIYUANORDER where id = " + orderID);
+        if(rs.next()) {
+            id = rs.getInt("ID");
+            endTime = rs.getString("ENDTIME");
+            orderClass = rs.getString("ORDERCLASS");
+            orderName = rs.getString("ORDERNAME");
+            picture = rs.getString("PICTURE");
+            postUid = rs.getInt("POSTUID");
+            price = rs.getInt("PRICE");
+            receiveUid = rs.getInt("RECEIVEUID");
+            status = rs.getString("STATUS");
+        }
+
+        rs.close();
+        stmt.close();
+        conn.close();
+    } catch (Exception e) {
+        e.printStackTrace();
     }
 %>
 <!--header-->
@@ -170,9 +208,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="col-md-7 single-top-in">
                 <div class="single-para">
-                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h4>
-                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-                        classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                    <h4><%=orderName%></h4>
+                    <%--<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+                        classical Latin literature from 45 BC, making it over 2000 years old.</p>--%>
                     <div class="star">
                         <ul>
                             <li><i> </i></li>
@@ -188,9 +226,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="clearfix"></div>
                     </div>
 
-                    <label class="add-to">$32.8</label>
+                    <label class="add-to"><%=price%></label>
 
-                    <div class="available">
+                    <%--<div class="available">
                         <h6>Available Options :</h6>
                         <ul>
 
@@ -207,9 +245,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <option>Euro</option>
                                 </select></li>
                         </ul>
-                    </div>
+                    </div>--%>
 
-                    <a href="#" class="cart">接单</a>
+                    <a href="receiveOrder.jsp<%="?id="+id%>" class="cart">接单</a>
 
                 </div>
             </div>

@@ -166,14 +166,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 ResultSet rs = stmt.executeQuery("select * from JIYUANORDER");
                 int i = 0;
                 while (rs.next()) {
-                    String id = rs.getString("ID");
+                    Integer id = rs.getInt("ID");
                     String orderName = rs.getString("ORDERNAME");
                     String orderClass = rs.getString("ORDERCLASS");
-                    String price = rs.getString("PRICE");
+                    Integer price = rs.getInt("PRICE");
                     String endTime = rs.getString("ENDTIME");
                     String picture = rs.getString("PICTURE");
-                    String postUid = rs.getString("POSTUID");
-                    String receiveUid = rs.getString("RECEIVEUID");
+                    Integer postUid = rs.getInt("POSTUID");
+                    Integer receiveUid = rs.getInt("RECEIVEUID");
                     String status = rs.getString("STATUS");
 
                     if(i%3==0) {
@@ -181,11 +181,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     }
                     out.println("<div class=\"col-md-4 grid-product-in\">");
                     out.println("<div class=\" product-grid\">");
-                    out.println("<a href=\"receive.jsp\"><img class=\"img-responsive \" src=\"images/pr.png\" alt=\"\"></a>");
+                    out.println("<a href=\"receive.jsp?orderID="+id+"\"><img class=\"img-responsive \" src=\"images/pr.png\" alt=\"\"></a>");
                     out.println("<div class=\"shoe-in\">");
                     out.println("<h6><a href=\"receive.jsp?orderID="+id+"\">"+orderName+"</a></h6>");
                     out.println("<label>"+price+"</label>");
-                    out.println("<a href=\"receive.jsp\" class=\"store\">FIND A STORE</a>");
+                    out.println("<a href=\"receive.jsp?orderID="+id+"\" class=\"store\">FIND A STORE</a>");
                     out.println("</div>");
                     out.println("<b class=\"plus-on\">+</b>");
                     out.println("</div>");
