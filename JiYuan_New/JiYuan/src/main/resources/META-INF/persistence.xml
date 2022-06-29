@@ -4,6 +4,15 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
     <persistence-unit name="default">
-
+        <class>top.lijiabo.jiyuan.User</class>
+        <class>top.lijiabo.jiyuan.Order</class>
+        <class>top.lijiabo.jiyuan.Complaint</class>
+    </persistence-unit>
+    <persistence-unit name="oracle" transaction-type="JTA">
+        <jta-data-source>java:jboss/datasources/OracleDS</jta-data-source>
+        <properties>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="show-sql" value="true"/>
+        </properties>
     </persistence-unit>
 </persistence>
