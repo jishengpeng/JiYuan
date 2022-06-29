@@ -1,22 +1,31 @@
-<!--这个地方来管理订单的状态-->
-<!DOCTYPE html>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Sport A Ecommerce Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
-    <link href="css/bootstrap3.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/bootstrap3.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- Custom Theme files -->
     <!--theme-style-->
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="Sport Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
     <!--fonts-->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
     <!--//fonts-->
 
 </head>
@@ -27,13 +36,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <div class="header">
     <div class="logo">
-        <a href="index.html"><img src="images/main-logo.jpg" alt="" ></a>
+        <a href="index.html"><img src="images/main-logo.jpg" alt=""></a>
         <!--			<a href="index.html"><h1>吉园</h1></a>-->
     </div>
-    <div  class="header-top">
+    <div class="header-top">
         <div class="header-grid">
             <ul class="header-in">
-                <li ><a href="account.html">个人信息</a> </li>
+                <li><a href="account.html">个人信息</a></li>
                 <!--						<li>	-->
                 <!--							<select class="in-drop">-->
                 <!--							  <option value="Dollars" class="in-of">Dollars</option>-->
@@ -45,7 +54,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="search-box">
                 <div id="sb-search" class="sb-search">
                     <form>
-                        <input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
+                        <input class="sb-search-input" placeholder="Enter your search term..." type="search"
+                               name="search" id="search">
                         <input class="sb-search-submit" type="submit" value="">
                         <span class="sb-icon-search"> </span>
                     </form>
@@ -55,13 +65,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <script src="js/classie.js"></script>
             <script src="js/uisearch.js"></script>
             <script>
-                new UISearch( document.getElementById( 'sb-search' ) );
+                new UISearch(document.getElementById('sb-search'));
             </script>
             <!-- //search-scripts -->
             <div class="online">
-                <a href="post.html" >我要发单</a>
+                <a href="post.html">我要发单</a>
             </div>
-            <div class="clearfix"> </div>
+            <div class="clearfix"></div>
         </div>
         <div class="header-bottom">
             <div class="h_menu4"><!-- start h_menu4 -->
@@ -89,54 +99,96 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!--							  <option value="Euro" class="in-of">Get Active1</option>-->
                 <!--							  <option value="Yen" class="in-of">Get Active2</option>-->
                 <!--							</select> </li>-->
-                <li ><select class="drop">
+                <li><select class="drop">
                     <option value="Dollars" class="in-of">当前所在社区：吉林大学</option>
                     <option value="Euro" class="in-of">哈尔滨工业大学社区</option>
                     <option value="Yen" class="in-of">大连理工社区</option>
                 </select></li>
             </ul>
-            <div class="clearfix"> </div>
+            <div class="clearfix"></div>
         </div>
     </div>
-    <div class="clearfix"> </div>
+    <div class="clearfix"></div>
 </div>
 <!---->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <br/><br/><br/>
-            <h2>发布订单界面</h2>
+            <h2>订单管理界面</h2>
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-md-6">
-                <form action="post.jsp" method="post">
-                    <div class="mb-3">
-                        <label for="order-name" class="form-label">订单标题</label>
-                        <input type="text" name="order-name" id="order-name" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="order-class" class="form-label">订单分类</label>
-                        <input type="text" name="order-class" id="order-class" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="price" class="form-label">价格</label>
-                        <input type="number" name="price" id="price" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="end-time" class="form-label">截止时间</label>
-                        <input type="datetime-local" name="end-time" id="end-time" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                        <label for="picture" class="form-label"></label>
-                        <input type="hidden" name="picture" id="picture" class="form-control" />
-                    </div>
-                    <button type="submit" class="btn btn-primary">提交</button>
-                    <br/><br/><br/>
-                </form>
+        <div class="col-md-8">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>订单名</th>
+                        <th>分类</th>
+                        <th>价格</th>
+                        <th>截止时间</th>
+                        <th>图片</th>
+                        <th>发单UID</th>
+                        <th>接单UID</th>
+                        <th>状态</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%--<tr>
+                        <td>000001</td>
+                        <td>订单名</td>
+                        <td>分类</td>
+                        <td>价格</td>
+                        <td>截止时间</td>
+                        <td>图片</td>
+                        <td>发单UID</td>
+                        <td>接单UID</td>
+                        <td>状态</td>
+                    </tr>--%>
+                    <%
+                        try {
+                            Class.forName("oracle.jdbc.OracleDriver");
+                            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@//192.168.0.104:1521/orcl", "c##lijiabo", "123456");
+                            Statement stmt = conn.createStatement();
+                            ResultSet rs = stmt.executeQuery("select * from JIYUANORDER");
+                            while (rs.next()) {
+                                String id = rs.getString("ID");
+                                String orderName = rs.getString("ORDERNAME");
+                                String orderClass = rs.getString("ORDERCLASS");
+                                String price = rs.getString("PRICE");
+                                String endTime = rs.getString("ENDTIME");
+                                String picture = rs.getString("PICTURE");
+                                String postUid = rs.getString("POSTUID");
+                                String receiveUid = rs.getString("RECEIVEUID");
+                                String status = rs.getString("STATUS");
+                                out.println("<tr>");
+                                out.println("<td>" + id + "</td>");
+                                out.println("<td>" + orderName + "</td>");
+                                out.println("<td>" + orderClass + "</td>");
+                                out.println("<td>" + price + "</td>");
+                                out.println("<td>" + endTime + "</td>");
+                                out.println("<td>" + picture + "</td>");
+                                out.println("<td>" + postUid + "</td>");
+                                out.println("<td>" + receiveUid + "</td>");
+                                out.println("<td>" + status + "</td>");
+                                out.println("</tr>");
+                            }
+                            stmt.close();
+                            conn.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    %>
+                    </tbody>
+                </table>
+            </div>
+            <br/><br/><br/>
         </div>
     </div>
 </div>
+
 <!---->
 <div class="footer">
     <div class="col-md-3 footer-left">
@@ -155,7 +207,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li><a href="orders.html">我要发单</a></li>
                 <li><a href="orders.html">支付系统</a></li>
             </ul>
-            <div class="clearfix"> </div>
+            <div class="clearfix"></div>
         </div>
     </div>
     <div class="col-md-3 footer-left left-footer">
@@ -174,7 +226,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li><a href="contact.html">吉林大学软件学院</a></li>
                 <li><a href="#">项目Github</a></li>
             </ul>
-            <div class="clearfix"> </div>
+            <div class="clearfix"></div>
         </div>
     </div>
     <div class="col-md-2 footer-left left-footer">
@@ -201,7 +253,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
 
     </div>
-    <div class="clearfix"> </div>
+    <div class="clearfix"></div>
 </div>
 </body>
 </html>
