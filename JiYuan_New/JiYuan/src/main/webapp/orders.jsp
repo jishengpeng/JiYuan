@@ -183,7 +183,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     out.println("<div class=\" product-grid\">");
                     out.println("<a href=\"receive.html\"><img class=\"img-responsive \" src=\"images/pr.png\" alt=\"\"></a>");
                     out.println("<div class=\"shoe-in\">");
-                    out.println("<h6><a href=\"receive.html\">"+orderName+"</a></h6>");
+                    out.println("<h6><a href=\"receive.html?orderID="+id+"\">"+orderName+"</a></h6>");
                     out.println("<label>"+price+"</label>");
                     out.println("<a href=\"receive.html\" class=\"store\">FIND A STORE</a>");
                     out.println("</div>");
