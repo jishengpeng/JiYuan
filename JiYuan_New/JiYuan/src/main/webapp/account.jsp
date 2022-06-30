@@ -79,7 +79,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		e.printStackTrace();
 	}
 %>
-<!-- TODO:将此文件改为JSP，实现显示信息的功能 -->
 <!--header-->
 <div class="line">
 

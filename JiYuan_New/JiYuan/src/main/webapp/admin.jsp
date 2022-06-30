@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +12,6 @@
 <!--    <link href="style.css" rel="stylesheet" type="text/css">-->
 </head>
 <body>
-<!-- TODO:加入管理订单的功能 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">吉园</a>
@@ -144,6 +147,70 @@
                                 <td></td>
                                 <td><a href="#">删除</a></td>
                             </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>订单名</th>
+                            <th>订单类别</th>
+                            <th>截止日期</th>
+                            <th>图片</th>
+                            <th>发布者UID</th>
+                            <th>接收者UID</th>
+                            <th>订单价格</th>
+                            <th>订单状态</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!--<tr>
+                            <td>000001</td>
+                            <td>李嘉博</td>
+                            <td>管理员</td>
+                            <td></td>
+                            <td><a href="#">删除</a></td>
+                        </tr>-->
+                        <%
+                            try {
+                                Class.forName("oracle.jdbc.OracleDriver");
+                                Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@//192.168.0.104:1521/orcl", "c##lijiabo", "123456");
+                                Statement stmt = conn.createStatement();
+                                ResultSet rs = stmt.executeQuery("select * from JIYUANORDER");
+                                while (rs.next()) {
+                                    String id = rs.getString("ID");
+                                    String orderName = rs.getString("ORDERNAME");
+                                    String orderClass = rs.getString("ORDERCLASS");
+                                    String price = rs.getString("PRICE");
+                                    String endTime = rs.getString("ENDTIME");
+                                    String picture = rs.getString("PICTURE");
+                                    Integer postUid = rs.getInt("POSTUID");
+                                    Integer receiveUid = rs.getInt("RECEIVEUID");
+                                    String status = rs.getString("STATUS");
+                                    out.println("<tr>");
+                                    out.println("<td>" + id + "</td>");
+                                    out.println("<td>" + orderName + "</td>");
+                                    out.println("<td>" + orderClass + "</td>");
+                                    out.println("<td>" + price + "</td>");
+                                    out.println("<td>" + endTime + "</td>");
+                                    out.println("<td>" + picture + "</td>");
+                                    out.println("<td>" + postUid + "</td>");
+                                    out.println("<td>" + receiveUid + "</td>");
+                                    out.println("<td>" + status + "</td>");
+                                    out.println("</tr>");
+                                }
+                                stmt.close();
+                                conn.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        %>
                         </tbody>
                     </table>
                 </div>

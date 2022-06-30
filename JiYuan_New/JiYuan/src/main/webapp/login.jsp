@@ -38,7 +38,7 @@
                         response.addCookie(cookie2);
                         // 跳转
                         if (role.equalsIgnoreCase("admin")) {
-                            response.sendRedirect("admin.html");
+                            response.sendRedirect("admin.jsp");
                         } else if (role.equalsIgnoreCase("user")) {
                             response.sendRedirect("index.html");
                         }
