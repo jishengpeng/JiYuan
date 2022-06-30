@@ -25,7 +25,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         window.scrollTo(0, 1);
     } </script>
     <!--fonts-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
     <!--//fonts-->
 
 </head>
@@ -148,12 +148,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <td>状态</td>
                     </tr>--%>
                     <%
-                        // TODO:根据UID过滤这些订单
+                        // Get username from Cookie
+                        String username = "";
+                        Cookie[] cookies = request.getCookies();
+                        for (Cookie cookie : cookies) {
+                            if (cookie.getName().equalsIgnoreCase("username")) {
+                                username = cookie.getValue();
+                            }
+                        }
+
                         try {
                             Class.forName("oracle.jdbc.OracleDriver");
                             Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@//192.168.0.104:1521/orcl", "c##lijiabo", "123456");
                             Statement stmt = conn.createStatement();
-                            ResultSet rs = stmt.executeQuery("select * from JIYUANORDER");
+                            // Get uid from username
+                            String sql = "select id from JIYUANUSER where username = '" + username + "'";
+                            ResultSet rs = stmt.executeQuery(sql);
+                            int uid = 0;
+                            if (rs.next()) {
+                                uid = rs.getInt("id");
+                            }
+                            rs = stmt.executeQuery("select * from JIYUANORDER");
                             while (rs.next()) {
                                 String id = rs.getString("ID");
                                 String orderName = rs.getString("ORDERNAME");
@@ -161,9 +176,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 String price = rs.getString("PRICE");
                                 String endTime = rs.getString("ENDTIME");
                                 String picture = rs.getString("PICTURE");
-                                String postUid = rs.getString("POSTUID");
-                                String receiveUid = rs.getString("RECEIVEUID");
+                                Integer postUid = rs.getInt("POSTUID");
+                                Integer receiveUid = rs.getInt("RECEIVEUID");
                                 String status = rs.getString("STATUS");
+                                // filter orders by uid
+                                if(uid!=postUid && uid!=receiveUid){
+                                    continue;
+                                }
                                 out.println("<tr>");
                                 out.println("<td>" + id + "</td>");
                                 out.println("<td>" + orderName + "</td>");
