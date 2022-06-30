@@ -45,6 +45,8 @@
             }
             // Insert Order
             stmt.executeUpdate("insert into JIYUANORDER (ENDTIME, ORDERCLASS, ORDERNAME, PICTURE, POSTUID, PRICE, STATUS) values ('" + endTime + "', '" + orderClass + "', '" + orderName + "', '" + "empty" + "', '" + userID + "', '" + price + "', '" + "WAITING" + "')");
+            // update user's numpost
+            stmt.executeUpdate("update JIYUANUSER set numpost = numpost + 1 where id = '" + userID + "'");
             stmt.close();
             conn.close();
             out.println("<h1>发单成功</h1><br/><p>3秒后将跳转到主页</p>");

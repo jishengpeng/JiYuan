@@ -25,7 +25,7 @@
         if (username.equals("")) {
             response.sendRedirect("login.html");
         } else {
-            response.sendRedirect("account.html");
+            response.sendRedirect("account.jsp");
         }
     %>
 </body>

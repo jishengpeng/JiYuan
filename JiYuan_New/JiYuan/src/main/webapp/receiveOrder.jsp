@@ -54,6 +54,8 @@
                 // Update order RECEIVEUID to uid
                 sql = "update JIYUANORDER set RECEIVEUID = " + uid + " where id = " + id;
                 stmt.executeUpdate(sql);
+                // Update user's numreceive
+                sql = "update JIYUANUSER set numreceive = numreceive + 1 where id = " + uid;
                 stmt.close();
                 conn.close();
                 out.println("<h1>接单成功</h1><br/><p>3秒后将跳转到主页</p>");

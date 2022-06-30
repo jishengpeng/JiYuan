@@ -1,17 +1,17 @@
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.DriverManager" %>
-<%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %>
 <!--A Design by W3layouts
 Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Sport A Ecommerce Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+    <title>Sport A Ecommerce Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
     <link href="css/bootstrap3.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
@@ -36,6 +36,50 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </head>
 <body>
+<%
+	// Get username from cookie
+	String username = "";
+	Cookie[] cookies = request.getCookies();
+	if (cookies != null) {
+		for (Cookie cookie : cookies) {
+			if (cookie.getName().equalsIgnoreCase("username")) {
+				username = cookie.getValue();
+			}
+		}
+	}
+	String role = "";
+	int numReceive = 0;
+	int numPost = 0;
+	String mobile = "";
+	int credit = 0;
+	String community = "";
+	// Get uid from username in database
+	try {
+		Class.forName("oracle.jdbc.OracleDriver");
+		Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@//192.168.0.104:1521/orcl", "c##lijiabo", "123456");
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("select id from JIYUANUSER where username = '" + username + "'");
+		int uid = 0;
+		if (rs.next()) {
+			uid = rs.getInt("id");
+		}
+		// Get user info
+		rs = stmt.executeQuery("select * from JIYUANUSER where id = " + uid);
+		if (rs.next()) {
+			role = rs.getString("ROLE");
+			numReceive = rs.getInt("NUMRECEIVE");
+			numPost = rs.getInt("NUMPOST");
+			mobile = rs.getString("MOBILE");
+			credit = rs.getInt("CREDIT");
+			community = rs.getString("COMMUNITY");
+		}
+		stmt.close();
+		conn.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+%>
+<!-- TODO:将此文件改为JSP，实现显示信息的功能 -->
 <!--header-->
 <div class="line">
 
@@ -116,94 +160,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <div class="clearfix"></div>
 </div>
-
-<div class="product-grids">
-    <div class="container">
-        <%--<div class="product-top">
-            <div class="col-md-4 grid-product-in">
-                <div class=" product-grid">
-                    <a href="receive.jsp"><img class="img-responsive " src="images/pr.png" alt=""></a>
-                    <div class="shoe-in">
-                        <h6><a href="receive.jsp">Lorem Ipsum is simply dummy </a></h6>
-                        <label>$67.99</label>
-                        <a href="receive.jsp" class="store">FIND A STORE</a>
-                    </div>
-
-                    <b class="plus-on">+</b>
-                </div>
+<!---->
+<div class="container">
+    <div class="account">
+        <h2>个人信息系统</h2>
+        <div class="account-pass">
+            <div class="col-md-7 account-top">
+                <form>
+                    <span><span style="color: red; ">个人昵称:</span></span>
+                    <span><%=username%></span>
+					<span><span style="color: red; ">角色:</span></span>
+					<span><%=role%></span>
+					<%--<span><span style="color: red; ">所属社区:</span></span>
+					<span><%=community%></span>--%>
+                    <span><span style="color: red; ">手机号码:</span></span>
+                    <span><%=mobile%></span>
+                    <span>接单数量:<%=numReceive%></span>
+                    <span>发单数量:<%=numPost%></span>
+                    <span>请输入你想在你页面的留言板中留下的信息:</span>
+                    <input type="password">
+                    <input type="button" value="新增留言">
+                    <br><input type="submit" value="退出系统">
+                </form>
             </div>
-            <div class="col-md-4 grid-product-in">
-                <div class=" product-grid">
-                    <a href="receive.jsp"><img class="img-responsive " src="images/pr1.png" alt=""></a>
-                    <div class="shoe-in">
-                        <h6><a href="receive.jsp">Lorem Ipsum is simply dummy </a></h6>
-                        <label>$67.99</label>
-                        <a href="receive.jsp" class="store">FIND A STORE</a>
-                    </div>
-
-                    <b class="plus-on">+</b>
+            <div class="col-md-5 left-account ">
+                <a href="receive.jsp"><img class="img-responsive " src="images/信誉系统.png" alt=""></a>
+                <div class="five">
+                    <h1><%=credit%>分</h1><span>信誉积分</span>
                 </div>
-            </div>
-            <div class="col-md-4 grid-product-in">
-                <div class=" product-grid">
-                    <a href="receive.jsp"><img class="img-responsive " src="images/pr2.png" alt=""></a>
-                    <div class="shoe-in">
-                        <h6><a href="receive.jsp">Lorem Ipsum is simply dummy </a></h6>
-                        <label>$67.99</label>
-                        <a href="receive.jsp" class="store">FIND A STORE</a>
-                    </div>
-
-                    <b class="plus-on">+</b>
-                </div>
+                <a href="#" class="create">当信誉分低于90分时,账户将被注销!!!</a>
+                <div class="clearfix"></div>
             </div>
             <div class="clearfix"></div>
-        </div>--%>
-        <%
-            try {
-                Class.forName("oracle.jdbc.OracleDriver");
-                Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@//192.168.0.104:1521/orcl", "c##lijiabo", "123456");
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("select * from JIYUANORDER");
-                int i = 0;
-                while (rs.next()) {
-                    Integer id = rs.getInt("ID");
-                    String orderName = rs.getString("ORDERNAME");
-                    String orderClass = rs.getString("ORDERCLASS");
-                    Integer price = rs.getInt("PRICE");
-                    String endTime = rs.getString("ENDTIME");
-                    String picture = rs.getString("PICTURE");
-                    Integer postUid = rs.getInt("POSTUID");
-                    Integer receiveUid = rs.getInt("RECEIVEUID");
-                    String status = rs.getString("STATUS");
-
-                    if(i%3==0) {
-                        out.println("<div class=\"product-top\">");
-                    }
-                    out.println("<div class=\"col-md-4 grid-product-in\">");
-                    out.println("<div class=\" product-grid\">");
-                    out.println("<a href=\"receive.jsp?orderID="+id+"\"><img class=\"img-responsive \" src=\"images/pr.png\" alt=\"\"></a>");
-                    out.println("<div class=\"shoe-in\">");
-                    out.println("<h6><a href=\"receive.jsp?orderID="+id+"\">"+orderName+"</a></h6>");
-                    out.println("<label>"+price+"</label>");
-                    out.println("<a href=\"receive.jsp?orderID="+id+"\" class=\"store\">FIND A STORE</a>");
-                    out.println("</div>");
-                    out.println("<b class=\"plus-on\">+</b>");
-                    out.println("</div>");
-                    out.println("</div>");
-                    if(i%3==2) {
-                        out.println("<div class=\"clearfix\"></div>");
-                        out.println("</div>");
-                    }
-
-                    i++;
-                }
-                stmt.close();
-                conn.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        %>
+        </div>
     </div>
+
 </div>
 
 <!--footer-->
